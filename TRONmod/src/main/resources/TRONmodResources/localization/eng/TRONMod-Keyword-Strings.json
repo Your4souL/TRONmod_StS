@@ -1,0 +1,59 @@
+[
+  {
+    "NAMES": [
+      "keyword",
+      "keywords"
+    ],
+    "DESCRIPTION": "Whenever you play a card, gain 1 dexterity this turn only."
+  },
+  {
+    "PROPER_NAME": "Multiword Keyword",
+    "NAMES": [
+      "Multiword Keyword",
+      "multiword_keyword",
+      "multiword_keywords",
+      "multikey",
+      "multikeyword"
+    ],
+    "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+  },
+  {
+    "NAMES": [
+      "throw"
+    ],
+    "DESCRIPTION": "Choose an Attack from hand. Exhaust it if playable, otherwise use it and put on the bottom of draw pile."
+  },
+  {
+    "NAMES": [
+      "disk",
+      "disks"
+    ],
+    "DESCRIPTION": "Unplayable Retain attack that should be thrown to make effect."
+  },
+  {
+    "NAMES": [
+      "slash"
+    ],
+    "DESCRIPTION": "Can't be played if there is no disk in your hand."
+  },
+  {
+    "PROPER_NAME": "Bug",
+    "NAMES": [
+      "bug"
+    ],
+    "DESCRIPTION": "When owner gains Block, if Block amount is less or equal Bug, it takes damage equal to Bug and decreases Bug by 2."
+  },
+  {
+    "PROPER_NAME": "Parkour",
+    "NAMES": [
+      "parkour"
+    ],
+    "DESCRIPTION": "When you gain Parkour, EVRYONE gain #bBlock next turn equal to Parkour. At the end of your turn reduce Parkour by half.."
+  },
+  {
+    "NAMES": [
+      "malleable"
+    ],
+    "DESCRIPTION": "Upon receiving attack damage, gains block equal to #yMalleable and increase it's amount by 1 this turn."
+  }
+]

@@ -1,0 +1,18 @@
+{
+"TRONmod:CommonPower": {
+        "NAME": "Placeholder Power",
+        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
+},
+"TRONmod:AbraxasCodePower": {
+        "NAME": "Abraxas Code",
+        "DESCRIPTIONS": ["Next time you should die, revive with #y", "Next #b"," times you should die, revive with #y" , " HP, and loose 5 max HP."]
+},
+"TRONmod:BugPower": {
+        "NAME": "Bug",
+        "DESCRIPTIONS": ["When owner gain #bArmor, if it's amount is less or equal #b", " owner takes #y", " damage."]
+},
+"TRONmod:ParkourPower": {
+        "NAME": "Parkour",
+        "DESCRIPTIONS": ["When you gain Parkour, EVERYONE gain #bBlock #bnext #bturn equal to Parkour. At the end of your turn reduce Parkour by half."]
+}
+}

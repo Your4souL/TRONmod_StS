@@ -1,0 +1,55 @@
+{
+  "TRONmod:SlashingStrike": {
+    "NAME": "Slashing Strike",
+    "DESCRIPTION": "Deal !D! damage. NL tronmod:Slash.",
+    "EXTENDED_DESCRIPTION": [
+      "Can't SLASH without NL Disk in hand!"
+    ]
+  },
+  "TRONmod:BasisDisk": {
+    "NAME": "Basis Disk",
+    "DESCRIPTION": "tronmod:Disk. NL Deal !D! damage to random enemy twice."
+  },
+  "TRONmod:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "TRONmod:Periphery": {
+    "NAME": "Periphery",
+    "DESCRIPTION": "Gain !M! tronmod:Keyword.",
+    "UPGRADE_DESCRIPTION": "Gain !M! tronmod:Keywords."
+  },
+  "TRONmod:AcrobaticThrow": {
+    "NAME": "Acrobatic Throw",
+    "DESCRIPTION": "Gain !M! tronmod:Parkour. NL Draw !M!, then tronmod:Throw 1."
+  },
+  "TRONmod:FromWallToWall": {
+    "NAME": "From Wall to Wall",
+    "DESCRIPTION": "Gain !M! tronmod:Parkour. Double your next-turn Block."
+  },
+  "TRONmod:Calculation": {
+    "NAME": "Calculation",
+    "DESCRIPTION": "Whenever you use cost X card, its effects increased by !M!."
+  },
+  "TRONmod:InfectedIncision": {
+    "NAME": "Infected Incision",
+    "DESCRIPTION": "Apply !M! tronmod:Bug, NL then double it. NL Deal !D! damage."
+  },
+  "TRONmod:AbraxasCode": {
+    "NAME": "Abraxas Code",
+    "DESCRIPTION": "Ethereal. NL Next time you should die, revive with HP equal to your tronmod:Bug and loose 5 max HP.",
+    "UPGRADE_DESCRIPTION": "Next time you should die, revive with HP equal to your tronmod:Bug and loose 5 max HP."
+  },
+  "TRONmod:AirAssault": {
+    "NAME": "Air Assault",
+    "DESCRIPTION": "Deal !D! damage [E] times. NL (Deal !TRONmod:ENERGY_DAMAGE! damage total.)"
+  },
+  "TRONmod:BugIt": {
+    "NAME": "Bug It!",
+    "DESCRIPTION": "Apply !M! tronmod:Malleable and tronmod:Bug to an enemy X times."
+  },
+  "TRONmod:BreakDisk": {
+    "NAME": "Break Disk",
+    "DESCRIPTION" : "Choose a Disk from your hand to remove from your deck. Add [#9a9599]1[]/[#6ee3ed]2[]/[#f9bc3f]3[] *Abraxas *disk *shards to your deck. NL Exhaust."
+  }
+}

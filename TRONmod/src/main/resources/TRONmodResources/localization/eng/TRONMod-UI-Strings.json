@@ -1,0 +1,8 @@
+{
+  "TRONMod:ThrowAction": {
+    "TEXT": ["throw (exhaust or shuffle to draw pile)"]
+  },
+  "TRONMod:DiskToHandAction": {
+    "TEXT": ["place to your hand"]
+  }
+}
