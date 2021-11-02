@@ -84,6 +84,8 @@ public class TRONMod implements
 
     public static final String BADGE_IMAGE = "TRONmodResources/images/Badge.png";
 
+    public static int CardsToExhaust;
+
     //public static final String THE_DEFAULT_SKELETON_ATLAS = "TRONmodResources/images/char/defaultCharacter/skeleton.atlas";
     //public static final String THE_DEFAULT_SKELETON_JSON = "TRONmodResources/images/char/defaultCharacter/skeleton.json";
 
