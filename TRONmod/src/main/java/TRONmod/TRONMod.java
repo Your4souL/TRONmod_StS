@@ -58,7 +58,7 @@ public class TRONMod implements
     private static final String AUTHOR = "Your4souL";
     private static final String DESCRIPTION = "Restore System stability as Monitor ANON.";
 
-    public static final Color ANON_CYAN = CardHelper.getColor(37.0f, 40.0f, 80.0f);
+    public static final Color ANON_CYAN = CardHelper.getColor(35.0f, 156.0f, 156.0f);
 
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
@@ -84,7 +84,7 @@ public class TRONMod implements
 
     public static final String BADGE_IMAGE = "TRONmodResources/images/Badge.png";
 
-    public static int CardsToExhaust;
+    public static int StatusesToExhaust;
 
     //public static final String THE_DEFAULT_SKELETON_ATLAS = "TRONmodResources/images/char/defaultCharacter/skeleton.atlas";
     //public static final String THE_DEFAULT_SKELETON_JSON = "TRONmodResources/images/char/defaultCharacter/skeleton.json";

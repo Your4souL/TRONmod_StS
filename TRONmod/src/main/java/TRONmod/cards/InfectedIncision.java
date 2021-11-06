@@ -1,6 +1,6 @@
 package TRONmod.cards;
 
-import TRONmod.actions.DoubleDecayAction;
+import TRONmod.actions.DoubleBugAction;
 import TRONmod.powers.BugPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -46,7 +46,7 @@ public class InfectedIncision extends AbstractDynamicCard {
             addToBot(new VFXAction(new ClawEffect(m.hb.cX, m.hb.cY, Color.OLIVE, Color.WHITE), 0.1F));
         }
         addToBot(new ApplyPowerAction(m, p, new BugPower(m, p, this.magicNumber), this.magicNumber));
-        addToBot(new DoubleDecayAction(m, p));
+        addToBot(new DoubleBugAction(m, p));
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
     }
 

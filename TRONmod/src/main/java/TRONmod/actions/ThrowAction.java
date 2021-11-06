@@ -2,11 +2,14 @@ package TRONmod.actions;
 
 import TRONmod.cards.AbstractDynamicCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 
 import java.util.ArrayList;
 
@@ -14,6 +17,7 @@ public class ThrowAction extends AbstractGameAction {
     private AbstractPlayer p;
 
     private boolean isRandom;
+    private int ricochetAmount;
     public static int numPlaced;
 
     /*
@@ -26,12 +30,14 @@ public class ThrowAction extends AbstractGameAction {
 
     private ArrayList<AbstractCard> cannotThrow = new ArrayList<>();
 
-    public ThrowAction(AbstractCreature target, AbstractCreature source, int amount, boolean isRandom) {
+    public ThrowAction(AbstractCreature target, AbstractCreature source, int amount, int ricochetAmount, boolean isRandom) {
         this.target = target;
         this.p = (AbstractPlayer)target;
         setValues(target, source, amount);
         this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
+        this.ricochetAmount = ricochetAmount;
+        this.isRandom = isRandom;
     }
 
     public void update() {
@@ -39,7 +45,7 @@ public class ThrowAction extends AbstractGameAction {
 
             //DEFYING CANNOT THROW CARDS
             for (AbstractCard c : this.p.hand.group) {
-                if (!isAttack(c))
+                if (!isThrowable(c))
                     this.cannotThrow.add(c);
             }
 
@@ -50,7 +56,7 @@ public class ThrowAction extends AbstractGameAction {
             }
             if (this.p.hand.group.size() - this.cannotThrow.size() == 1)
                 for (AbstractCard c : this.p.hand.group) {
-                    if (isAttack(c)) {
+                    if (isThrowable(c)) {
                         for (int i = 0; i < this.amount; i++) throwCard(c);
                         this.isDone = true;
                         return;
@@ -102,15 +108,28 @@ public class ThrowAction extends AbstractGameAction {
     private void throwCard(AbstractCard c) {
         if (c.cost == -2) {
             ((AbstractDynamicCard) c).thrownUse();
-            this.p.hand.moveToBottomOfDeck(c);
+            if (this.ricochetAmount > 0) for (int i = 0; i < this.ricochetAmount - 1; i++) ((AbstractDynamicCard) c).thrownUse();
+            this.p.hand.moveToDeck(c, true);
         } else {
-            this.p.hand.moveToExhaustPile(c);
+            c.exhaust = true;
+            c.freeToPlayOnce = true;
+            addToBot(new NewQueueCardAction(c, true, false, true));
+            if (this.ricochetAmount > 0) {
+                for (int i = 0; i < this.ricochetAmount - 1; i++) {
+                    AbstractCard tmp = c.makeStatEquivalentCopy();
+                    tmp.purgeOnUse = true;
+                    addToBot(new NewQueueCardAction(tmp, true, false, true));
+                    addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), 1, false, false, false));
+                }
+            }
+            addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), 1, false, false, false));
+            //this.p.hand.moveToExhaustPile(c);
         }
         this.isDone = true;
 
     }
 
-    private boolean isAttack(AbstractCard c) {
-        return c.type.equals(AbstractCard.CardType.ATTACK);
+    private boolean isThrowable(AbstractCard c) {
+        return !c.type.equals(AbstractCard.CardType.POWER);
     }
 }
