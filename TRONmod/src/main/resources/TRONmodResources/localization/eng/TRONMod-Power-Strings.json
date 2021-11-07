@@ -1,7 +1,11 @@
 {
-"TRONmod:CommonPower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
+"TRONmod:PeripheryStrengthPower": {
+        "NAME": "Periphery Strength",
+        "DESCRIPTIONS": ["If you have no playable cards in hand at the end of your turn, gain #b", " #yStrength."]
+},
+"TRONmod:PeripheryDexterityPower": {
+        "NAME": "Periphery Dexterity",
+        "DESCRIPTIONS": ["If you have no playable cards in hand at the end of your turn, gain #b", " #yDexterity."]
 },
 "TRONmod:AbraxasCodePower": {
         "NAME": "Abraxas Code",

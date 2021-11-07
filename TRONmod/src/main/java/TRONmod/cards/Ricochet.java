@@ -17,7 +17,7 @@ public class Ricochet extends AbstractDynamicCard {
     public static final String ID = TRONMod.makeID(Ricochet.class.getSimpleName());
     public static final String IMG = makeCardPath("AcrobaticThrow.png");
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheANON.Enums.COLOR_CYAN;

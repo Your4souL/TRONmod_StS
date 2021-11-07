@@ -16,8 +16,8 @@
   },
   "TRONmod:Periphery": {
     "NAME": "Periphery",
-    "DESCRIPTION": "Gain !M! tronmod:Keyword.",
-    "UPGRADE_DESCRIPTION": "Gain !M! tronmod:Keywords."
+    "DESCRIPTION": "If you have no playable cards in hand at the end of your turn, gain !M! Strength.",
+    "UPGRADE_DESCRIPTION": "If you have no playable cards in hand at the end of your turn, gain !M! Strength and !M! Dexterity."
   },
   "TRONmod:AcrobaticThrow": {
     "NAME": "Acrobatic Throw",
@@ -42,7 +42,7 @@
   },
   "TRONmod:AirAssault": {
     "NAME": "Air Assault",
-    "DESCRIPTION": "Deal !D! damage [E] times. NL (Deal !TRONmod:ENERGY_DAMAGE! damage total.)"
+    "DESCRIPTION": "Deal !D! damage random enemy X times. NL Deals additional !M! damage for each 10 Parkour you have."
   },
   "TRONmod:BugIt": {
     "NAME": "Bug It!",
@@ -51,5 +51,10 @@
   "TRONmod:BreakDisk": {
     "NAME": "Break Disk",
     "DESCRIPTION" : "Choose a Disk from your hand to remove from your deck. Add [#9a9599]1[]/[#6ee3ed]2[]/[#f9bc3f]3[] *Abraxas *disk *shards to your deck. NL Exhaust."
+  },
+  "TRONmod:Ricochet": {
+    "NAME": "Ricochet",
+    "DESCRIPTION" : "tronmod:Throw a card from hand X times.",
+    "UPGRADE_DESCRIPTION": "tronmod:Throw a card from hand X+1 times."
   }
 }

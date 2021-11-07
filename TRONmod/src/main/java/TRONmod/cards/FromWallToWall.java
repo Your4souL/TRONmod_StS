@@ -20,9 +20,9 @@ public class FromWallToWall extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheANON.Enums.COLOR_CYAN;
 
-    private static final int COST = 1;
-    private static final int MAGIC = 3;
-    private static final int MAGIC_UPGRADE = 2;
+    private static final int COST = 2;
+    private static final int MAGIC = 5;
+    private static final int MAGIC_UPGRADE = 3;
 
     public FromWallToWall() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

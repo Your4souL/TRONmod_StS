@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import TRONmod.powers.PeripheryPower;
+import TRONmod.powers.PeripheryStrengthPower;
 
 public class UncommonPowerAction extends AbstractGameAction {
     private boolean freeToPlayOnce;
@@ -47,7 +47,7 @@ public class UncommonPowerAction extends AbstractGameAction {
             for (int i = 0; i < effect; ++i) {
                 
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
-                        new PeripheryPower(p, p, magicNumber), magicNumber,
+                        new PeripheryStrengthPower(p, p, magicNumber), magicNumber,
                         AttackEffect.BLUNT_LIGHT));
             }
             if (!freeToPlayOnce) {

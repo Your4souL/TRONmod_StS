@@ -125,7 +125,7 @@ public class ThrowAction extends AbstractGameAction {
             addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), 1, false, false, false));
             //this.p.hand.moveToExhaustPile(c);
         }
-        this.isDone = true;
+        //this.isDone = true;
 
     }
 

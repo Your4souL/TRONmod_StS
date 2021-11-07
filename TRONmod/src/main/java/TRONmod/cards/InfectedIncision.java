@@ -28,11 +28,11 @@ public class InfectedIncision extends AbstractDynamicCard {
 
     private static final int COST = 3;
 
-    private static final int DAMAGE = 8;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DAMAGE = 12;
+    private static final int UPGRADE_PLUS_DMG = 6;
 
-    private static final int CONTAGION_AMT = 1;
-    private static final int CONTAGION_PLUS_AMT = 1;
+    private static final int CONTAGION_AMT = 2;
+    private static final int CONTAGION_PLUS_AMT = 2;
 
     public InfectedIncision() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);

@@ -1,13 +1,10 @@
 package TRONmod.cards;
 
+import TRONmod.powers.PeripheryStrengthPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import TRONmod.TRONMod;
-import TRONmod.actions.UncommonPowerAction;
 import TRONmod.characters.TheANON;
 
 import static TRONmod.TRONMod.makeCardPath;
@@ -20,7 +17,7 @@ public class Calculation extends AbstractDynamicCard {
     //private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     //public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheANON.Enums.COLOR_CYAN;
@@ -37,7 +34,7 @@ public class Calculation extends AbstractDynamicCard {
 
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-
+        addToBot(new ApplyPowerAction(p, p, new PeripheryStrengthPower(p, p, magicNumber), magicNumber));
     }
 
     @Override
