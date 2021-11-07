@@ -1,5 +1,6 @@
 package TRONmod.cards;
 
+import TRONmod.actions.AirAssaultAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
@@ -28,8 +29,8 @@ public class AirAssault extends AbstractDynamicCard {
     private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 2;
 
-    private static final int PARKOURDAMAGE = 2;
-    private static final int UPGRADE_PLUS_PARKOURDMG = 1;
+    private static final int PARKOUR_DAMAGE = 2;
+    private static final int UPGRADE_PLUS_PARKOUR_DMG = 1;
 
     public int specialDamage;
 
@@ -39,7 +40,7 @@ public class AirAssault extends AbstractDynamicCard {
 
         isMultiDamage = true;
 
-        this.baseMagicNumber = PARKOURDAMAGE;
+        this.baseMagicNumber = PARKOUR_DAMAGE;
         this.magicNumber = this.baseMagicNumber;
     }
 
@@ -48,9 +49,7 @@ public class AirAssault extends AbstractDynamicCard {
         int effect = EnergyPanel.totalCount;
         this.damage += this.secondMagicNumber;
         calculateCardDamage(m);
-        for (int i = 0; i < effect; i++) {
-            AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-        }
+        addToBot(new AirAssaultAction(p, this.damage, this.damageTypeForTurn, this.upgraded, this.freeToPlayOnce, this.energyOnUse));
     }
 
     public void applyPowers() {
@@ -80,7 +79,7 @@ public class AirAssault extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_PARKOURDMG);
+            upgradeMagicNumber(UPGRADE_PLUS_PARKOUR_DMG);
             initializeDescription();
         }
     }

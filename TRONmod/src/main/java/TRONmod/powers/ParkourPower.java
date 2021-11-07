@@ -57,10 +57,16 @@ public class ParkourPower extends AbstractPower {
         addToBot(new ApplyPowerAction(this.owner, this.owner, new NextTurnBlockPower(this.owner, this.amount), this.amount));
         for (AbstractMonster m : (AbstractDungeon.getMonsters()).monsters) {
             if (!m.isDead && !m.isDying) {
-                if (!m.hasPower("SlashInterruptionPower")) {
+                if (!m.hasPower("DistractionPower")) {
                     addToBot(new ApplyPowerAction(m, this.owner, new NextTurnBlockPower(m, this.amount), this.amount));
                 } else {
-                    addToBot(new ReducePowerAction(m, this.owner, m.getPower("SlashInterruptionPower"), 1));
+                    if (m.getPower("DistractionPower").amount > this.amount) {
+                        addToBot(new ReducePowerAction(m, this.owner, m.getPower("DistractionPower"), this.amount));
+                    } else {
+                        int blockedBlock = m.getPower("DistractionPower").amount;
+                        addToBot(new RemoveSpecificPowerAction(m, m, "DistractionPower"));
+                        addToBot(new ApplyPowerAction(m, this.owner, new NextTurnBlockPower(m, this.amount - blockedBlock), this.amount - blockedBlock));
+                    }
                 }
             }
         }
@@ -71,10 +77,16 @@ public class ParkourPower extends AbstractPower {
         addToBot(new ApplyPowerAction(this.owner, this.owner, new NextTurnBlockPower(this.owner, this.amount), this.amount));
         for (AbstractMonster m : (AbstractDungeon.getMonsters()).monsters) {
             if (!m.isDead && !m.isDying) {
-                if (!m.hasPower("SlashInterruptionPower")) {
+                if (!m.hasPower("DistractionPower")) {
                     addToBot(new ApplyPowerAction(m, this.owner, new NextTurnBlockPower(m, this.amount), this.amount));
                 } else {
-                    addToBot(new ReducePowerAction(m, this.owner, m.getPower("SlashInterruptionPower"), 1));
+                    if (m.getPower("DistractionPower").amount > this.amount) {
+                        addToBot(new ReducePowerAction(m, this.owner, m.getPower("DistractionPower"), this.amount));
+                    } else {
+                        int blockedBlock = m.getPower("DistractionPower").amount;
+                        addToBot(new RemoveSpecificPowerAction(m, m, "DistractionPower"));
+                        addToBot(new ApplyPowerAction(m, this.owner, new NextTurnBlockPower(m, this.amount - blockedBlock), this.amount - blockedBlock));
+                    }
                 }
             }
         }

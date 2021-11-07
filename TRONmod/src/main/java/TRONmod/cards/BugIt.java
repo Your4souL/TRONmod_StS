@@ -19,7 +19,7 @@ public class BugIt extends AbstractDynamicCard {
 
     private static final int COST = -1;
 
-    private static final int CURLUP = 2;
+    private static final int CURL_UP = 2;
 
     private static final int BUG = 3;
     private static final int UPGRADE_PLUS_BUG = 5;
@@ -27,8 +27,8 @@ public class BugIt extends AbstractDynamicCard {
     public BugIt() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
-        magicNumber = baseMagicNumber = CURLUP;
-        secondMagicNumber = baseSecondMagicNumber = BUG;
+        this.magicNumber = this.baseMagicNumber = CURL_UP;
+        this.secondMagicNumber = this.baseSecondMagicNumber = BUG;
 
     }
 

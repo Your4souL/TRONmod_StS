@@ -18,7 +18,7 @@ public class ThrowAction extends AbstractGameAction {
 
     private boolean isRandom;
     private int ricochetAmount;
-    public static int numPlaced;
+    //public static int numPlaced;
 
     /*
 
@@ -75,7 +75,7 @@ public class ThrowAction extends AbstractGameAction {
 
                 //SELECTING CARDS
                 if (this.p.hand.group.size() > this.amount) {
-                    numPlaced = this.amount;
+                    //numPlaced = this.amount;
                     AbstractDungeon.handCardSelectScreen.open(/*TEXT[0]*/"throw (exhaust or shuffle to draw pile)", this.amount, false);
                     tickDuration();
                     return;

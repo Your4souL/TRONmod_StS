@@ -29,7 +29,7 @@ public class BugPower extends AbstractPower {
     public BugPower(AbstractCreature owner, AbstractCreature source, int poisonAmt) {
 
         name = NAME;
-        ID = "Bug";
+        ID = POWER_ID;
 
         this.owner = owner;
         this.source = source;

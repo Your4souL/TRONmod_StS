@@ -1,5 +1,7 @@
 package TRONmod.cards;
 
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
 public abstract class AbstractDynamicCard extends AbstractDefaultCard {
@@ -17,4 +19,6 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
     }
 
     public void thrownUse() {}
+
+    public void diskEffect(AbstractMonster m) {}
 }

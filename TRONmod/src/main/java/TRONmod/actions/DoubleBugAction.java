@@ -14,8 +14,8 @@ public class DoubleBugAction extends AbstractGameAction {
     }
 
     public void update() {
-        if (this.target != null && this.target.hasPower("Bug"))
-            addToTop(new ApplyPowerAction(this.target, this.source, new BugPower(this.target, this.source, (this.target.getPower("Bug")).amount), (this.target.getPower("Bug")).amount));
+        if (this.target != null && this.target.hasPower("BugPower"))
+            addToTop(new ApplyPowerAction(this.target, this.source, new BugPower(this.target, this.source, (this.target.getPower("BugPower")).amount), (this.target.getPower("BugPower")).amount));
         this.isDone = true;
     }
 }
