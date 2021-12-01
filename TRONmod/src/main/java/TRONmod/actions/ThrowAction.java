@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class ThrowAction extends AbstractGameAction {
     private AbstractPlayer p;
 
-    private boolean isRandom;
     private int ricochetAmount;
     //public static int numPlaced;
 
@@ -30,14 +29,13 @@ public class ThrowAction extends AbstractGameAction {
 
     private ArrayList<AbstractCard> cannotThrow = new ArrayList<>();
 
-    public ThrowAction(AbstractCreature target, AbstractCreature source, int amount, int ricochetAmount, boolean isRandom) {
+    public ThrowAction(AbstractCreature target, AbstractCreature source, int amount, int ricochetAmount) {
         this.target = target;
-        this.p = (AbstractPlayer)target;
+        this.p = AbstractDungeon.player;
         setValues(target, source, amount);
         this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.ricochetAmount = ricochetAmount;
-        this.isRandom = isRandom;
     }
 
     public void update() {
@@ -68,21 +66,19 @@ public class ThrowAction extends AbstractGameAction {
 
             //RANDOMNESS
             if (this.p.hand.size() < this.amount)
+            {
                 this.amount = this.p.hand.size();
-            if (this.isRandom) {
                 for (int i = 0; i < this.amount; i++) throwCard(this.p.hand.getRandomCard(AbstractDungeon.cardRandomRng));
-            } else {
-
-                //SELECTING CARDS
-                if (this.p.hand.group.size() > this.amount) {
-                    //numPlaced = this.amount;
-                    AbstractDungeon.handCardSelectScreen.open(/*TEXT[0]*/"throw (exhaust or shuffle to draw pile)", this.amount, false);
-                    tickDuration();
-                    return;
-                }
-                for (int i = 0; i < this.p.hand.size(); i++) throwCard(this.p.hand.getRandomCard(AbstractDungeon.cardRandomRng));
-
             }
+            if (this.p.hand.group.size() > this.amount)
+            {
+                //numPlaced = this.amount;
+                AbstractDungeon.handCardSelectScreen.open(/*TEXT[0]*/"throw (exhaust or shuffle to draw pile)", this.amount, true);
+                tickDuration();
+                return;
+            }
+
+
         }
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
 

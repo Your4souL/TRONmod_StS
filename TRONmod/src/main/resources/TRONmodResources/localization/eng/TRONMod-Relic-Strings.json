@@ -1,9 +1,9 @@
 {
-  "TRONmod:StartDisk_relic": {
-    "NAME": "Start Disk",
-    "FLAVOR": "Hello World! Initialize.Disk...",
+  "TRONmod:BasisDisk": {
+    "NAME": "Basis Disk",
+    "FLAVOR": "«If you lose your disk or fail to follow commands, NL you will be subject to immediate de-resolution.»",
     "DESCRIPTIONS": [
-      "At the start of each combat, choose #b1 #bDisk from your draw pile to place into your hand."
+      "Exhaust first 3 status cards added to your draw pile each combat. NL Exhaust one more card for each completed act."
     ]
   },
   "TRONmod:PlaceholderRelic2": {

@@ -35,7 +35,7 @@ public class RicochetAction extends AbstractGameAction {
             ++effect;
         }
         if (effect > 0) {
-            addToBot(new ThrowAction(p, p, 1, effect, false));
+            addToBot(new ThrowAction(p, p, 1, effect));
             if (!freeToPlayOnce) {
                 p.energy.use(EnergyPanel.totalCount);
             }

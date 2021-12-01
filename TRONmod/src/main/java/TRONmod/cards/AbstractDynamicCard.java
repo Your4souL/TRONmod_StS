@@ -20,5 +20,7 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
 
     public void thrownUse() {}
 
-    public void diskEffect(AbstractMonster m) {}
+    public void diskPreEffect(AbstractMonster m, AbstractSlashCard c) {}
+
+    public void diskPostEffect(AbstractMonster m, AbstractSlashCard c) {}
 }

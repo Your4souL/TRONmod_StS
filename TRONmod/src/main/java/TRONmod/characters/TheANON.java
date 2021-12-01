@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 import TRONmod.TRONMod;
 import TRONmod.cards.*;
 import TRONmod.relics.DefaultClickableRelic;
-import TRONmod.relics.StartDiskRelic;
+import TRONmod.relics.BasisDisk;
 import TRONmod.relics.PlaceholderRelic2;
 
 import java.util.ArrayList;
@@ -98,7 +98,7 @@ public class TheANON extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
 
         retVal.add(SlashingStrike.ID);
-        retVal.add(BasisDisk.ID);
+        retVal.add(TRONmod.cards.BasisDisk.ID);
         retVal.add(AcrobaticThrow.ID);
         retVal.add(InfectedIncision.ID);
 
@@ -118,11 +118,11 @@ public class TheANON extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(StartDiskRelic.ID);
+        retVal.add(BasisDisk.ID);
         retVal.add(PlaceholderRelic2.ID);
         retVal.add(DefaultClickableRelic.ID);
 
-        UnlockTracker.markRelicAsSeen(StartDiskRelic.ID);
+        UnlockTracker.markRelicAsSeen(BasisDisk.ID);
         UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
 

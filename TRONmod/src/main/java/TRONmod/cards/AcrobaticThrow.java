@@ -36,7 +36,7 @@ public class AcrobaticThrow extends AbstractDynamicCard {
 
         addToBot(new ApplyPowerAction(p, p, new ParkourPower(p, p, this.magicNumber), this.magicNumber));
         addToBot(new DrawCardAction(p, this.magicNumber));
-        addToBot(new ThrowAction(p, p, 1, 0, false));
+        addToBot(new ThrowAction(p, p, 1, 0));
 
     }
 

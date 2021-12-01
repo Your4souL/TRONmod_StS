@@ -5,6 +5,7 @@ import TRONmod.characters.TheANON;
 import TRONmod.util.CustomTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
+import com.megacrit.cardcrawl.actions.common.ModifyDamageAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -28,14 +29,18 @@ public class BasisDisk extends AbstractDynamicCard {
     public static final CardColor COLOR = TheANON.Enums.COLOR_CYAN;
 
     private static final int COST = -2;
-    private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 7;
+    private static final int UPGRADE_PLUS_DMG = 2;
+
+    private static final int MAGIC_NUMBER = 2;
+    private static final int UPGRADE_PLUS_M_N = 2;
 
     public BasisDisk() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-
+        this.baseMagicNumber = this.magicNumber = MAGIC_NUMBER;
         this.selfRetain = true;
+        this.isInnate = true;
         this.tags.add(CustomTags.DISK);
     }
 
@@ -54,9 +59,21 @@ public class BasisDisk extends AbstractDynamicCard {
     }
 
     @Override
+    public void diskPreEffect(AbstractMonster m, AbstractSlashCard c) {
+        m.loseBlock(this.magicNumber, false);
+        c.baseDamage += this.magicNumber;
+    }
+
+    @Override
+    public void diskPostEffect(AbstractMonster m, AbstractSlashCard c) {
+        c.baseDamage -= this.magicNumber;
+    }
+
+    @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeMagicNumber(UPGRADE_PLUS_M_N);
             upgradeDamage(UPGRADE_PLUS_DMG);
             initializeDescription();
         }

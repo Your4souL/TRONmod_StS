@@ -13,11 +13,11 @@
         },
         "TRONmod:CalculationPower": {
                 "NAME": "Calculation",
-                "DESCRIPTIONS": ["Whenever you play a cost #bX card, its effects are increased by #b"]
+                "DESCRIPTIONS": ["Whenever you play a cost #bX card, it's effects are increased by #b"]
         },
         "TRONmod:HackPower": {
                 "NAME": "Hack",
-                "DESCRIPTIONS": ["Next time you play a cost #bX card, its effects are increased by #b"]
+                "DESCRIPTIONS": ["Next time you play a cost #bX card, it's effects are increased by #b"]
         },
         "TRONmod:StrategyPower": {
                 "NAME": "Strategy",

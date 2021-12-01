@@ -8,7 +8,7 @@
   },
   "TRONmod:BasisDisk": {
     "NAME": "Basis Disk",
-    "DESCRIPTION": "tronmod:Disk. NL Deal !D! damage to random enemy twice."
+    "DESCRIPTION": "Innate. NL tronmod:Disk remove !M! Block and add !M! damage. NL Deal !D! damage to random enemy twice."
   },
   "TRONmod:Defend": {
     "NAME": "Defend",
@@ -29,7 +29,7 @@
   },
   "TRONmod:Calculation": {
     "NAME": "Calculation",
-    "DESCRIPTION": "Whenever you use cost X card, its effects increased by !M!."
+    "DESCRIPTION": "Whenever you play cost X card, its effects increased by !M!."
   },
   "TRONmod:InfectedIncision": {
     "NAME": "Infected Incision",

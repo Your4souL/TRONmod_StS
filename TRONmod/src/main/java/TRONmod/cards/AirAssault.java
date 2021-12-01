@@ -58,7 +58,7 @@ public class AirAssault extends AbstractDynamicCard {
         else this.secondMagicNumber = 0;
         int realBaseDamage = this.baseDamage;
         this.baseDamage += this.secondMagicNumber;
-        applyPowers();
+        super.applyPowers();
         this.baseDamage = realBaseDamage;
         this.isDamageModified = (this.damage != this.baseDamage);
     }
