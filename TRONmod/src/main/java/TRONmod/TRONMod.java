@@ -26,7 +26,7 @@ import TRONmod.events.IdentityCrisisEvent;
 import TRONmod.potions.PlaceholderPotion;
 import TRONmod.relics.BottledPlaceholderRelic;
 import TRONmod.relics.DefaultClickableRelic;
-import TRONmod.relics.BasisDisk;
+import TRONmod.relics.BasisDiskRelic;
 import TRONmod.relics.PlaceholderRelic2;
 import TRONmod.util.IDCheckDontTouchPls;
 import TRONmod.util.TextureLoader;
@@ -246,7 +246,7 @@ public class TRONMod implements
     public void receiveEditRelics() {
         logger.info("Adding relics");
 
-        BaseMod.addRelicToCustomPool(new BasisDisk(), TheANON.Enums.COLOR_CYAN);
+        BaseMod.addRelicToCustomPool(new BasisDiskRelic(), TheANON.Enums.COLOR_CYAN);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheANON.Enums.COLOR_CYAN);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheANON.Enums.COLOR_CYAN);
 

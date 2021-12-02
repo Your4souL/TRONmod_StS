@@ -1,9 +1,12 @@
 package TRONmod.actions;
 
 import TRONmod.cards.AbstractDynamicCard;
+import TRONmod.relics.BasisDiskRelic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -17,6 +20,7 @@ public class ThrowAction extends AbstractGameAction {
     private AbstractPlayer p;
 
     private int ricochetAmount;
+    private boolean anyNumber;
     //public static int numPlaced;
 
     /*
@@ -29,9 +33,10 @@ public class ThrowAction extends AbstractGameAction {
 
     private ArrayList<AbstractCard> cannotThrow = new ArrayList<>();
 
-    public ThrowAction(AbstractCreature target, AbstractCreature source, int amount, int ricochetAmount) {
+    public ThrowAction(AbstractCreature target, AbstractCreature source, int amount, int ricochetAmount, boolean anyNumber) {
         this.target = target;
         this.p = AbstractDungeon.player;
+        this.anyNumber = anyNumber;
         setValues(target, source, amount);
         this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
@@ -52,10 +57,11 @@ public class ThrowAction extends AbstractGameAction {
                 this.isDone = true;
                 return;
             }
+
             if (this.p.hand.group.size() - this.cannotThrow.size() == 1)
                 for (AbstractCard c : this.p.hand.group) {
                     if (isThrowable(c)) {
-                        for (int i = 0; i < this.amount; i++) throwCard(c);
+                        throwCard(c);
                         this.isDone = true;
                         return;
                     }
@@ -64,22 +70,25 @@ public class ThrowAction extends AbstractGameAction {
             //HIDING NON-ATTACK CARDS
             this.p.hand.group.removeAll(this.cannotThrow);
 
+            /*
             //RANDOMNESS
             if (this.p.hand.size() < this.amount)
             {
                 this.amount = this.p.hand.size();
                 for (int i = 0; i < this.amount; i++) throwCard(this.p.hand.getRandomCard(AbstractDungeon.cardRandomRng));
             }
-            if (this.p.hand.group.size() > this.amount)
+            */
+
+            if (this.p.hand.group.size() >= this.amount)
             {
-                //numPlaced = this.amount;
-                AbstractDungeon.handCardSelectScreen.open(/*TEXT[0]*/"throw (exhaust or shuffle to draw pile)", this.amount, true);
-                tickDuration();
-                return;
+                AbstractDungeon.handCardSelectScreen.open(/*TEXT[0]*/"throw (exhaust or shuffle to draw pile)", this.amount, anyNumber);
+            } else {
+                AbstractDungeon.handCardSelectScreen.open(/*TEXT[0]*/"throw (exhaust or shuffle to draw pile)", this.p.hand.group.size(), anyNumber);
             }
-
-
+            tickDuration();
+            return;
         }
+
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
 
             //OPERATE WITH SELECTED CARDS
@@ -115,17 +124,24 @@ public class ThrowAction extends AbstractGameAction {
                     AbstractCard tmp = c.makeStatEquivalentCopy();
                     tmp.purgeOnUse = true;
                     addToBot(new NewQueueCardAction(tmp, true, false, true));
-                    addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), 1, false, false, false));
+                    tryAddVoid();
                 }
             }
-            addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), 1, false, false, false));
-            //this.p.hand.moveToExhaustPile(c);
+            tryAddVoid();
         }
-        //this.isDone = true;
-
     }
 
     private boolean isThrowable(AbstractCard c) {
         return !c.type.equals(AbstractCard.CardType.POWER);
+    }
+
+    private void tryAddVoid() {
+        if (p.hasRelic(BasisDiskRelic.ID) && p.getRelic(BasisDiskRelic.ID).counter > 0) {
+            p.getRelic(BasisDiskRelic.ID).counter -= 1;
+            addToBot(new RelicAboveCreatureAction(p, p.getRelic(BasisDiskRelic.ID)));
+        } else {
+            addToBot(new WaitAction(1.0f));
+            addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), 1, false, false, false));
+        }
     }
 }

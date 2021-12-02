@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static TRONmod.TRONMod.makeCardPath;
+import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
 public class BasisDisk extends AbstractDynamicCard {
 
@@ -22,6 +23,7 @@ public class BasisDisk extends AbstractDynamicCard {
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.NONE;
@@ -44,32 +46,33 @@ public class BasisDisk extends AbstractDynamicCard {
         this.tags.add(CustomTags.DISK);
     }
 
-    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {}
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         return false;
     }
 
-    @Override
     public void thrownUse() {
         super.thrownUse();
         addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
-    @Override
     public void diskPreEffect(AbstractMonster m, AbstractSlashCard c) {
         m.loseBlock(this.magicNumber, false);
         c.baseDamage += this.magicNumber;
     }
 
-    @Override
     public void diskPostEffect(AbstractMonster m, AbstractSlashCard c) {
         c.baseDamage -= this.magicNumber;
     }
 
-    @Override
+    public String getExDesc(int pos) { return EXTENDED_DESCRIPTION[pos];}
+
+    public String getDesc() {
+        return DESCRIPTION;
+    }
+
     public void upgrade() {
         if (!upgraded) {
             upgradeName();

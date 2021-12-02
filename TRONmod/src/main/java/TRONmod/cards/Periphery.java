@@ -33,7 +33,6 @@ public class Periphery extends AbstractDynamicCard {
         magicNumber = baseMagicNumber = MAGIC;
     }
 
-    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new PeripheryStrengthPower(p, p, magicNumber), magicNumber));
         if (upgraded) addToBot(new ApplyPowerAction(p, p, new PeripheryDexterityPower(p, p, magicNumber), magicNumber));

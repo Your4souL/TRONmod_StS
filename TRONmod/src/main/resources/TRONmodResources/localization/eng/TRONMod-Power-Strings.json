@@ -34,5 +34,9 @@
         "TRONmod:ParkourPower": {
                 "NAME": "Parkour",
                 "DESCRIPTIONS": ["Whenever you gain Parkour, EVERYONE gain #bBlock #bnext #bturn equal to Parkour. At the end of your turn reduce Parkour by half."]
-}
+        },
+        "TRONmod:AntigravityPower": {
+                "NAME": "Antigravity",
+                "DESCRIPTIONS": ["At the end of your turn shuffle #b", " #yGravity #Anchor card into your draw pile.", " #yGravity #Anchor cards into your draw pile."]
+        }
 }

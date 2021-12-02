@@ -44,4 +44,9 @@ public class SimpleHack extends AbstractDynamicCard {
             initializeDescription();
         }
     }
+
+    @Override
+    public void initializeDescription() {
+        super.initializeDescription();
+    }
 }

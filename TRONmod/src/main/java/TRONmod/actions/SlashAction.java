@@ -22,6 +22,7 @@ public class SlashAction extends AbstractGameAction {
     private AbstractCard.CardTarget targetType;
     private AbstractSlashCard sc;
     private AbstractGameAction.AttackEffect visualEffect;
+    private boolean SelectDescription = false;
 
     //public static int numPlaced;
 
@@ -49,24 +50,15 @@ public class SlashAction extends AbstractGameAction {
         if (this.duration == Settings.ACTION_DUR_FAST) {
 
             //DEFYING NON-DISK CARDS
-            for (AbstractCard c : this.p.hand.group) {
-                if (!c.hasTag(CustomTags.DISK)) this.nonDisks.add(c);
+            for (AbstractCard c : p.hand.group) {
+                if (!c.hasTag(CustomTags.DISK)) nonDisks.add(c);
             }
 
             //CHECKING IF NOT ENOUGH CARDS TO CHOOSE FROM
-            if (this.p.hand.group.size() - this.nonDisks.size() == 1) {
-                for (AbstractCard c : this.p.hand.group) {
+            if (p.hand.group.size() - nonDisks.size() == 1) {
+                for (AbstractCard c : p.hand.group) {
                     if (c.hasTag(CustomTags.DISK)) {
-                        AbstractDynamicCard disk = (AbstractDynamicCard)c;
-                        disk.superFlash();
-
-                        disk.diskPreEffect(this.m, this.sc);
-                        this.sc.calculateCardDamage(this.m);
-
-                        addToBot(new DamageAction(this.m, new DamageInfo(this.p, this.sc.damage, this.damageType), this.visualEffect));
-                        addToBot(new ApplyPowerAction(this.m, this.p, new DistractionPower(this.m, this.p, this.sc.damage)));
-
-                        disk.diskPostEffect(this.m, this.sc);
+                        slash(c);
                         this.isDone = true;
                         return;
                     }
@@ -74,11 +66,19 @@ public class SlashAction extends AbstractGameAction {
             }
 
             //HIDING NON-ATTACK CARDS
-            this.p.hand.group.removeAll(this.nonDisks);
+            p.hand.group.removeAll(nonDisks);
 
             //SELECTING CARDS
-            if (this.p.hand.group.size() > 1) {
+            if (p.hand.group.size() > 1) {
                 AbstractDungeon.handCardSelectScreen.open(/*TEXT[0]*/"", 1, false);
+                if (!SelectDescription) {
+                    for (AbstractCard c : p.hand.group) {
+                        AbstractDynamicCard d = (AbstractDynamicCard)c;
+                        d.rawDescription = d.getExDesc(0);
+                        d.initializeDescription();
+                    }
+                    SelectDescription = true;
+                }
                 tickDuration();
                 return;
             }
@@ -88,17 +88,17 @@ public class SlashAction extends AbstractGameAction {
 
             //OPERATE WITH SELECTED CARD
             for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
-                AbstractDynamicCard disk = (AbstractDynamicCard)c;
-                disk.superFlash();
+                slash(c);
+                p.hand.addToTop(c);
+            }
 
-                disk.diskPreEffect(this.m, this.sc);
-                this.sc.calculateCardDamage(this.m);
-
-                addToBot(new DamageAction(this.m, new DamageInfo(this.p, this.sc.damage, this.damageType), this.visualEffect));
-                addToBot(new ApplyPowerAction(this.m, this.p, new DistractionPower(this.m, this.p, this.sc.damage)));
-
-                disk.diskPostEffect(this.m, this.sc);
-                this.p.hand.addToTop(disk);
+            if (SelectDescription) {
+                for (AbstractCard c : p.hand.group) {
+                    AbstractDynamicCard d = (AbstractDynamicCard)c;
+                    d.rawDescription = d.getDesc();
+                    d.initializeDescription();
+                }
+                SelectDescription = false;
             }
 
             //RETURN HIDDEN CARDS
@@ -112,8 +112,21 @@ public class SlashAction extends AbstractGameAction {
     }
 
     private void returnCards() {
-        for (AbstractCard c : this.nonDisks)
-            this.p.hand.addToTop(c);
-        this.p.hand.refreshHandLayout();
+        for (AbstractCard c : nonDisks)
+            p.hand.addToTop(c);
+        p.hand.refreshHandLayout();
+    }
+
+    private void slash(AbstractCard c) {
+        AbstractDynamicCard disk = (AbstractDynamicCard)c;
+        disk.superFlash();
+
+        disk.diskPreEffect(m, sc);
+        sc.calculateCardDamage(m);
+
+        addToBot(new DamageAction(m, new DamageInfo(p, sc.damage, damageType), visualEffect));
+        addToBot(new ApplyPowerAction(m, p, new DistractionPower(m, p, sc.damage)));
+
+        disk.diskPostEffect(m, sc);
     }
 }

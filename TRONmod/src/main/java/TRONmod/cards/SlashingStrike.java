@@ -40,7 +40,6 @@ public class SlashingStrike extends AbstractSlashCard {
         this.tags.add(CardTags.STRIKE);
     }
 
-    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SlashAction(p, m, this, TARGET, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }

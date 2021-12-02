@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 import TRONmod.TRONMod;
 import TRONmod.cards.*;
 import TRONmod.relics.DefaultClickableRelic;
-import TRONmod.relics.BasisDisk;
+import TRONmod.relics.BasisDiskRelic;
 import TRONmod.relics.PlaceholderRelic2;
 
 import java.util.ArrayList;
@@ -99,6 +99,7 @@ public class TheANON extends CustomPlayer {
 
         retVal.add(SlashingStrike.ID);
         retVal.add(TRONmod.cards.BasisDisk.ID);
+        /*
         retVal.add(AcrobaticThrow.ID);
         retVal.add(InfectedIncision.ID);
 
@@ -109,8 +110,9 @@ public class TheANON extends CustomPlayer {
         retVal.add(Periphery.ID);
         retVal.add(Calculation.ID);
         retVal.add(AbraxasCode.ID);
-
+        */
         retVal.add(AirAssault.ID);
+        retVal.add(SimpleHack.ID);
         retVal.add(BugIt.ID);
         return retVal;
     }
@@ -118,11 +120,11 @@ public class TheANON extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(BasisDisk.ID);
+        retVal.add(BasisDiskRelic.ID);
         retVal.add(PlaceholderRelic2.ID);
         retVal.add(DefaultClickableRelic.ID);
 
-        UnlockTracker.markRelicAsSeen(BasisDisk.ID);
+        UnlockTracker.markRelicAsSeen(BasisDiskRelic.ID);
         UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
 

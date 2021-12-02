@@ -1,5 +1,6 @@
 package TRONmod.cards;
 
+import TRONmod.powers.CalculationPower;
 import TRONmod.powers.PeripheryStrengthPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -34,7 +35,7 @@ public class Calculation extends AbstractDynamicCard {
 
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new PeripheryStrengthPower(p, p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new CalculationPower(p, p, magicNumber), magicNumber));
     }
 
     @Override

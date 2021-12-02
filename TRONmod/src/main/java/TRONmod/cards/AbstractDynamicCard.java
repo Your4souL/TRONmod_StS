@@ -23,4 +23,12 @@ public abstract class AbstractDynamicCard extends AbstractDefaultCard {
     public void diskPreEffect(AbstractMonster m, AbstractSlashCard c) {}
 
     public void diskPostEffect(AbstractMonster m, AbstractSlashCard c) {}
+
+    public String getExDesc(int pos) {
+        return languagePack.getCardStrings(String.valueOf(this)).EXTENDED_DESCRIPTION[pos];
+    }
+
+    public String getDesc() {
+        return languagePack.getCardStrings(String.valueOf(this)).DESCRIPTION;
+    }
 }
