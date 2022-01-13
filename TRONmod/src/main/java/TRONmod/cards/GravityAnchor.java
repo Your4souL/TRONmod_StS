@@ -16,7 +16,7 @@ import static TRONmod.TRONMod.makeCardPath;
 public class GravityAnchor extends AbstractDynamicCard {
 
     public static final String ID = TRONMod.makeID(GravityAnchor.class.getSimpleName());
-    public static final String IMG = makeCardPath("Defend.png");
+    public static final String IMG = makeCardPath("GravityAnchor.png");
 
     private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;

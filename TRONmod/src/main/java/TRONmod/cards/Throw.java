@@ -41,4 +41,9 @@ public class Throw extends AbstractDynamicCard {
             initializeDescription();
         }
     }
+
+    @Override
+    public void initializeDescription() {
+        super.initializeDescription();
+    }
 }

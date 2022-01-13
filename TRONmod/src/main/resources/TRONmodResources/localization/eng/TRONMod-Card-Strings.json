@@ -1,11 +1,4 @@
 {
-  "TRONmod:SlashingStrike": {
-    "NAME": "Slashing Strike",
-    "DESCRIPTION": "Deal !D! damage. NL tronmod:Slash.",
-    "EXTENDED_DESCRIPTION": [
-      "Can't SLASH without NL Disk in hand!"
-    ]
-  },
   "TRONmod:BasisDisk": {
     "NAME": "Basis Disk",
     "DESCRIPTION": "Innate. NL tronmod:Disk remove !M! Block and add !M! damage. NL Deal !D! damage to random enemy twice.",
@@ -13,6 +6,49 @@
       "Remove !M! Block and add !M! damage."
     ]
   },
+
+
+  "TRONmod:SlashingStrike": {
+    "NAME": "Slashing Strike",
+    "DESCRIPTION": "Deal !D! damage. NL tronmod:Slash.",
+    "EXTENDED_DESCRIPTION": [
+      "Can't SLASH without NL Disk in hand!"
+    ]
+  },
+  "TRONmod:VerticalSlash": {
+    "NAME": "Vertical Slash",
+    "DESCRIPTION" : "Deal !D! damage. NL tronmod:Slash. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL tronmod:Slash. NL Draw !M! cards.",
+    "EXTENDED_DESCRIPTION": [
+      "Can't SLASH without NL Disk in hand!"
+    ]
+  },
+
+
+  "TRONmod:Throw": {
+    "NAME": "Throw",
+    "DESCRIPTION" : "tronmod:Throw a card."
+  },
+  "TRONmod:MultiThrow": {
+    "NAME": "Multi-Throw",
+    "DESCRIPTION" : "tronmod:Throw up to 3 cards."
+  },
+  "TRONmod:AcrobaticThrow": {
+    "NAME": "Acrobatic Throw",
+    "DESCRIPTION": "Gain !M! tronmod:Parkour. NL Draw !M!, then tronmod:Throw 1 card."
+  },
+  "TRONmod:SwoopingThrow": {
+    "NAME": "Swooping Throw",
+    "DESCRIPTION": "Innate. NL Gain !M! tronmod:Parkour. NL tronmod:Throw 1 card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Gain !M! tronmod:Parkour. NL Draw !M! card, then tronmod:Throw 1 card. NL Exhaust."
+  },
+  "TRONmod:Ricochet": {
+    "NAME": "Ricochet",
+    "DESCRIPTION" : "tronmod:Throw a card from hand X times.",
+    "UPGRADE_DESCRIPTION": "tronmod:Throw a card from hand X+1 times."
+  },
+
+
   "TRONmod:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
@@ -21,10 +57,6 @@
     "NAME": "Periphery",
     "DESCRIPTION": "If you have no playable cards in hand at the end of your turn, gain !M! Strength.",
     "UPGRADE_DESCRIPTION": "If you have no playable cards in hand at the end of your turn, gain !M! Strength and !M! Dexterity."
-  },
-  "TRONmod:AcrobaticThrow": {
-    "NAME": "Acrobatic Throw",
-    "DESCRIPTION": "Gain !M! tronmod:Parkour. NL Draw !M!, then tronmod:Throw 1."
   },
   "TRONmod:FromWallToWall": {
     "NAME": "From Wall to Wall",
@@ -49,16 +81,11 @@
   },
   "TRONmod:BugIt": {
     "NAME": "Bug It!",
-    "DESCRIPTION": ""
+    "DESCRIPTION": "?"
   },
   "TRONmod:BreakDisk": {
     "NAME": "Break Disk",
-    "DESCRIPTION" : "Choose a Disk from your hand to remove from your deck. Add [#9a9599]1[]/[#6ee3ed]2[]/[#f9bc3f]3[] *Abraxas *disk *shards to your deck. NL Exhaust."
-  },
-  "TRONmod:Ricochet": {
-    "NAME": "Ricochet",
-    "DESCRIPTION" : "tronmod:Throw a card from hand X times.",
-    "UPGRADE_DESCRIPTION": "tronmod:Throw a card from hand X+1 times."
+    "DESCRIPTION" : "Choose a Disk in hand to remove from your deck. Add [#9a9599]1[]/[#6ee3ed]2[]/[#f9bc3f]3[] *Abraxas *disk *shards to hand and deck. NL Exhaust."
   },
   "TRONmod:SimpleHack": {
     "NAME": "Simple Hack",
@@ -68,5 +95,9 @@
     "NAME": "Antigravity",
     "DESCRIPTION": "At the end fo your turn shuffle *Gravity *Anchor to your draw pile.",
     "UPGRADE_DESCRIPTION": "Innate. NL At the end fo your turn shuffle *Gravity *Anchor to your draw pile."
+  },
+  "TRONmod:GravityAnchor": {
+    "NAME": "Gravity Anchor",
+    "DESCRIPTION" : "Unplayable. NL When you draw this card, draw 2 cards. NL If this card is tronmod:Thrown or Exhausted, gain !B! Block-next-turn."
   }
 }

@@ -70,15 +70,6 @@ public class ThrowAction extends AbstractGameAction {
             //HIDING NON-ATTACK CARDS
             this.p.hand.group.removeAll(this.cannotThrow);
 
-            /*
-            //RANDOMNESS
-            if (this.p.hand.size() < this.amount)
-            {
-                this.amount = this.p.hand.size();
-                for (int i = 0; i < this.amount; i++) throwCard(this.p.hand.getRandomCard(AbstractDungeon.cardRandomRng));
-            }
-            */
-
             if (this.p.hand.group.size() >= this.amount)
             {
                 AbstractDungeon.handCardSelectScreen.open(/*TEXT[0]*/"throw (exhaust or shuffle to draw pile)", this.amount, anyNumber);
@@ -112,8 +103,10 @@ public class ThrowAction extends AbstractGameAction {
 
     private void throwCard(AbstractCard c) {
         if (c.cost == -2) {
-            ((AbstractDynamicCard) c).thrownUse();
-            if (this.ricochetAmount > 0) for (int i = 0; i < this.ricochetAmount - 1; i++) ((AbstractDynamicCard) c).thrownUse();
+            if (c instanceof AbstractDynamicCard) {
+                ((AbstractDynamicCard) c).thrownUse();
+                if (this.ricochetAmount > 0) for (int i = 0; i < this.ricochetAmount - 1; i++) ((AbstractDynamicCard) c).thrownUse();
+            }
             this.p.hand.moveToDeck(c, true);
         } else {
             c.exhaust = true;
@@ -137,8 +130,7 @@ public class ThrowAction extends AbstractGameAction {
 
     private void tryAddVoid() {
         if (p.hasRelic(BasisDiskRelic.ID) && p.getRelic(BasisDiskRelic.ID).counter > 0) {
-            p.getRelic(BasisDiskRelic.ID).counter -= 1;
-            addToBot(new RelicAboveCreatureAction(p, p.getRelic(BasisDiskRelic.ID)));
+            p.getRelic(BasisDiskRelic.ID).onTrigger();
         } else {
             addToBot(new WaitAction(1.0f));
             addToBot(new MakeTempCardInDrawPileAction(new VoidCard(), 1, false, false, false));

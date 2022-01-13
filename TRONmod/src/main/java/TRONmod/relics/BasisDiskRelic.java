@@ -1,9 +1,11 @@
 package TRONmod.relics;
 
 import basemod.abstracts.CustomRelic;
+import basemod.devcommands.relic.Relic;
 import com.badlogic.gdx.graphics.Texture;
 import TRONmod.TRONMod;
 import TRONmod.util.TextureLoader;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
@@ -25,23 +27,25 @@ public class BasisDiskRelic extends CustomRelic {
         this.counter = preventCount;
     }
 
-    @Override
     public void atBattleStartPreDraw() {
         this.counter = preventCount;
     }
 
-    @Override
     public void onVictory() {
         if(AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
             preventCount += 1;
         }
     }
 
+    public void onTrigger() {
+        addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        counter -= 1;
+    }
+
     public String getUpdatedDescription() {
         return this.DESCRIPTIONS[0] + preventCount + this.DESCRIPTIONS[1];
     }
 
-    @Override
     public void updateDescription(AbstractPlayer.PlayerClass c) {
         super.updateDescription(c);
         description = DESCRIPTIONS[0] + preventCount + DESCRIPTIONS[1];

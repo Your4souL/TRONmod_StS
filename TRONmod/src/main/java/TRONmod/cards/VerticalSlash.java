@@ -20,6 +20,7 @@ public class VerticalSlash extends AbstractSlashCard {
     public static final String IMG = makeCardPath("VerticalSlash.png");
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -49,7 +50,13 @@ public class VerticalSlash extends AbstractSlashCard {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
             upgradeMagicNumber(UPGRADE_DRAW);
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+
+    @Override
+    public void initializeDescription() {
+        super.initializeDescription();
     }
 }

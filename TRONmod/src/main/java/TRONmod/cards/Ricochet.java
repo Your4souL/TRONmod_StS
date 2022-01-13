@@ -11,7 +11,7 @@ import static TRONmod.TRONMod.makeCardPath;
 public class Ricochet extends AbstractDynamicCard {
 
     public static final String ID = TRONMod.makeID(Ricochet.class.getSimpleName());
-    public static final String IMG = makeCardPath("AcrobaticThrow.png");
+    public static final String IMG = makeCardPath("Ricochet.png");
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;

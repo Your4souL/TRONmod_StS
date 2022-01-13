@@ -25,6 +25,7 @@ public class Calculation extends AbstractDynamicCard {
 
     private static final int COST = 1;
     private static final int MAGIC = 1;
+    private static final int UPGRADE_MAGIC = 1;
 
     public Calculation() {
 
@@ -43,6 +44,7 @@ public class Calculation extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             //rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }
     }

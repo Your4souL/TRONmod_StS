@@ -18,10 +18,12 @@
     "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
   },
   {
+    "PROPER_NAME": "Throw",
     "NAMES": [
-      "throw"
+      "throw",
+      "thrown"
     ],
-    "DESCRIPTION": "Choose an Attack from hand. Exhaust it if playable, otherwise use it and put on the bottom of draw pile."
+    "DESCRIPTION": "Pick non-power card and execute it. NL If playable, Exhaust it and add *Void to the top of your draw pile. NL If unplayable, shuffle into your draw pile."
   },
   {
     "NAMES": [
@@ -48,7 +50,7 @@
     "NAMES": [
       "parkour"
     ],
-    "DESCRIPTION": "When you gain Parkour, EVRYONE gain #bBlock next turn equal to Parkour. At the end of your turn reduce Parkour by half.."
+    "DESCRIPTION": "Whenever you gain Parkour, EVRYONE gain #bBlock next turn equal to Parkour. At the end of your turn reduce Parkour by half."
   },
   {
     "NAMES": [
